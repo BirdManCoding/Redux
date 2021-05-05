@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 function BlogPosts() {
-  const posts = useSelector(state => state.posts);
+  const posts = useSelector(state => state.posts.items);
 
   const postItems = posts.map(post => (
     <div key={post.id}>

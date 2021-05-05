@@ -1,11 +1,18 @@
 import { CREATE_POST, FETCH_ALL_POSTS } from "../actions/actionTypes";
 
-const reducer = (state = [], action) => {
+const initialState = {
+  items: [],
+  item: {},
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_POSTS:
-      return action.payload;
+      console.log("fetching the Posts Reducer");
+      return { ...state, items: action.payload };
     case CREATE_POST:
-      return state;
+      console.log("create a Post Reducer");
+      return { ...state, item: action.payload };
     default:
       return state;
   }

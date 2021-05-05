@@ -1,18 +1,16 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { createPost } from "../actions/postAction";
 
 function BlogForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const dispatch = useDispatch();
 
   async function onSubmitHandler(e) {
     e.preventDefault();
-    const res = await axios.post("https://jsonplaceholder.typicode.com/posts", {
-      title,
-      body: content,
-    });
-
-    console.log(res);
+    dispatch(createPost({ title, body: content }));
   }
 
   return (
