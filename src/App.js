@@ -1,19 +1,23 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 import { fetchAllPosts } from "./actions/postAction";
-import Blog from "./components/Blog";
+import Router from "./Router";
 
 function App() {
   const dispatch = useDispatch();
+  const post = useSelector(state => state.posts.item);
 
   useEffect(() => {
     dispatch(fetchAllPosts());
-  }, [dispatch]);
+  }, [dispatch, post]);
 
   return (
     <div className='App'>
-      <Blog />
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </div>
   );
 }
